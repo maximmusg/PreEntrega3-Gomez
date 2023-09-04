@@ -1,0 +1,54 @@
+// function eliminarPerfume(carrito) {
+//   alert(carrito.mostrar());
+//   let idElim = Number(prompt("Ingrese el id del producto que desea eliminar"));
+
+//   const productoAEliminar = carrito.listaCarrito.find(
+//     (perfume) => perfume.id === idElim
+//   );
+
+//   if (productoAEliminar) {
+//     carrito.listaCarrito = carrito.listaCarrito.filter(
+//       (perfume) => perfume.id !== idElim
+//     );
+//     alert("Producto eliminado del carrito.");
+//   } else {
+//     alert("El id del producto no pertenece al carrito.");
+//     eliminarPerfume(carrito);
+//   }
+
+//   alert("Carrito actualizado: \n" + carrito.mostrar());
+// }
+
+
+
+
+// class Carrito {
+//   constructor() {
+//     this.listaCarrito = [];
+//   }
+
+//   agregar(nuevoPerfume) {
+//     let enCarrito = this.listaCarrito.some(
+//       (perfume) => perfume.id == nuevoPerfume.id
+//     );
+//     if (!enCarrito) {
+//       this.listaCarrito.push(nuevoPerfume);
+//     }
+//   }
+
+//   mostrar() {
+//     let detalleCompra = "Carrito \n\n";
+//     this.listaCarrito.forEach((perfume) => {
+//       detalleCompra += perfume.detalleEnCarrito();
+//     });
+//     return detalleCompra;
+//   }
+
+//   totalCarrito() {
+//     return this.listaCarrito.reduce(
+//       (total, perfume) => total + perfume.precio * perfume.cantidad,
+//       0
+//     );
+//   }
+// }
+
