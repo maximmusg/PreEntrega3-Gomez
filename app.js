@@ -9,8 +9,8 @@ class Perfume {
     this.alt = alt;
   }
 
-  // sumarPerfume(cantidadPerfume) {
-  //   this.cantidad += cantidadPerfume;
+  //  sumarPerfume(cantidadPerfume) {
+  // this.cantidad += cantidadPerfume;
   // }
 
   // detalle() {
@@ -54,6 +54,7 @@ class ControlPerfumes {
       );
       btnAgregarAlCarrito.addEventListener("click", () => {
         carrito.agregar(perfume);
+        carrito.storage();
         carrito.mostrarDOM();
       });
     });
@@ -71,6 +72,31 @@ class Carrito {
 
   agregar(perfume) {
     this.listaCarrito.push(perfume);
+  }
+
+  storage() {
+    let listaCarritoJSON = JSON.stringify(this.listaCarrito);
+    localStorage.setItem("listaCarrito", listaCarritoJSON);
+  }
+
+  getStorage() {
+    let listaCarritoJSON = localStorage.getItem("listaCarrito");
+    let NuevalistaCarrito = JSON.parse(listaCarritoJSON);
+    let listaAuxiliar = [];
+
+    NuevalistaCarrito.forEach((producto) => {
+      const { id, nombre, imagen, descripcion, precio, alt } = producto;
+      let nuevoProducto = new Perfume(
+        id,
+        nombre,
+        imagen,
+        descripcion,
+        precio,
+        alt
+      );
+      listaAuxiliar.push(nuevoProducto);
+    });
+    this.listaCarrito = listaAuxiliar;
   }
 
   mostrarDOM() {
@@ -179,6 +205,9 @@ const perfum9 = new Perfume(
 //instanciar la lista de productos
 const carrito = new Carrito();
 const listp = new ControlPerfumes();
+carrito.getStorage();
+carrito.mostrarDOM();
+
 //agregar perfumes a la lista
 
 listp.agregar(perfum1);
