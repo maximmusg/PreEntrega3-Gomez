@@ -72,10 +72,17 @@ main {
   font-weight: bold;
 }
 
+.numeroCantidad {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 1rem;
+}
+
 .btn {
   background-color: aquamarine;
   border: 1px solid black;
-  font-weight: 600;
+  font-weight: bold;
+  color: black;
 }
 
 footer {

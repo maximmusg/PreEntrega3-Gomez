@@ -9,6 +9,14 @@ class Perfume {
     this.alt = alt;
   }
 
+  masCantidad() {
+    this.cantidad++;
+  }
+
+  menosCantidad() {
+    this.cantidadd > 1 && this.cantidad--;
+  }
+
   //  sumarPerfume(cantidadPerfume) {
   // this.cantidad += cantidadPerfume;
   // }
@@ -71,7 +79,14 @@ class Carrito {
   }
 
   agregar(perfume) {
-    this.listaCarrito.push(perfume);
+    let existe = this.listaCarrito.some((perf) => perf.id == perfume.id);
+
+    if (existe) {
+      let perf = this.listaCarrito.find((perf) => perf.id == perfume.id);
+      perf.masCantidad();
+    } else {
+      this.listaCarrito.push(perfume);
+    }
   }
 
   storage() {
@@ -81,22 +96,24 @@ class Carrito {
 
   getStorage() {
     let listaCarritoJSON = localStorage.getItem("listaCarrito");
-    let NuevalistaCarrito = JSON.parse(listaCarritoJSON);
-    let listaAuxiliar = [];
+    if (listaCarritoJSON) {
+      let NuevalistaCarrito = JSON.parse(listaCarritoJSON);
+      let listaAuxiliar = [];
 
-    NuevalistaCarrito.forEach((producto) => {
-      const { id, nombre, imagen, descripcion, precio, alt } = producto;
-      let nuevoProducto = new Perfume(
-        id,
-        nombre,
-        imagen,
-        descripcion,
-        precio,
-        alt
-      );
-      listaAuxiliar.push(nuevoProducto);
-    });
-    this.listaCarrito = listaAuxiliar;
+      NuevalistaCarrito.forEach((producto) => {
+        const { id, nombre, imagen, descripcion, precio, alt } = producto;
+        let nuevoProducto = new Perfume(
+          id,
+          nombre,
+          imagen,
+          descripcion,
+          precio,
+          alt
+        );
+        listaAuxiliar.push(nuevoProducto);
+      });
+      this.listaCarrito = listaAuxiliar;
+    }
   }
 
   mostrarDOM() {
@@ -114,7 +131,12 @@ class Carrito {
           <div class="card-body">
             <h5 class="card-title">Perfume: ${perfume.nombre}</h5>
             <p class="card-text">${perfume.descripcion}</p>
-            <p class="card-text">Cantidad: ${perfume.cantidad}</p>
+            <p class="card-text">Cantidad:
+            <button class="btn" ><i class="fa-solid fa-minus"></i></button>
+            <span class="numeroCantidad" >${perfume.cantidad}</span>
+            <button class="btn" ><i class="fa-solid fa-plus"></i></button>
+            
+            </p>
             <p class="card-text">Precio: ${perfume.precio}</p>
           </div>
         </div>
@@ -122,8 +144,26 @@ class Carrito {
     </div>
       `;
     });
+
+    this.mostrarTotalCarrito();
+  }
+
+  totalCarrito() {
+    return this.listaCarrito.reduce(
+      (acum, perfume) => acum + perfume.precio * perfume.cantidad,
+      0
+    );
+  }
+
+  mostrarTotalCarrito() {
+    const total__Carrito = document.getElementById("total__Carrito");
+    total__Carrito.innerText = `Precio Total: $${this.totalCarrito()}`;
   }
 }
+
+// calcularTotal(){
+//   return this.listaCarrito.reduce((acumulador,perfume) => acumulador + perfume.precio  )
+// }
 
 //se crearon productos
 
