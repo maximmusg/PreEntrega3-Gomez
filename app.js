@@ -14,7 +14,7 @@ class Perfume {
   }
 
   menosCantidad() {
-    this.cantidadd > 1 && this.cantidad--;
+    this.cantidad > 1 && this.cantidad--;
   }
 
   //  sumarPerfume(cantidadPerfume) {
@@ -66,12 +66,17 @@ class ControlPerfumes {
         carrito.mostrarDOM();
       });
     });
-  }
 
-  // buscar(id) {
-  //   return this.listadoPerfumes.find((perfume) => perfume.id == id);
-  // }
+    const vaciarCarritoButton = document.getElementById("vaciar__carrito");
+    vaciarCarritoButton.addEventListener("click", () => {
+      carrito.vaciarCarrito(); // Llamar a la función para vaciar el carrito
+    });
+  }
 }
+
+// buscar(id) {
+//   return this.listadoPerfumes.find((perfume) => perfume.id == id);
+// }
 
 class Carrito {
   constructor() {
@@ -159,11 +164,21 @@ class Carrito {
     const total__Carrito = document.getElementById("total__Carrito");
     total__Carrito.innerText = `Precio Total: $${this.totalCarrito()}`;
   }
-}
 
-// calcularTotal(){
-//   return this.listaCarrito.reduce((acumulador,perfume) => acumulador + perfume.precio  )
-// }
+  // vaciarCarrito() {
+  //   const vaciar__carrito = document.getElementById("vaciar__carrito");
+  //   vaciar__carrito.addEventListener("click", () => {
+  //     carrito.listaCarrito = [];
+  //     carrito.mostrarDOM();
+  //   });
+  // }
+
+  vaciarCarrito() {
+    this.listaCarrito = [];
+    this.storage();
+    this.mostrarDOM();
+  }
+}
 
 //se crearon productos
 
