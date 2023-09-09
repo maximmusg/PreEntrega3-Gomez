@@ -14,20 +14,8 @@ class Perfume {
   }
 
   menosCantidad() {
-    this.cantidad > 1 && this.cantidad--;
+    this.cantidad > 0 && this.cantidad--;
   }
-
-  //  sumarPerfume(cantidadPerfume) {
-  // this.cantidad += cantidadPerfume;
-  // }
-
-  // detalle() {
-  //   return `id: ${this.id} - El perfume: ${this.nombre} posee un precio de $${this.precio}. \n`;
-  // }
-
-  //   detalleEnCarrito() {
-  //     return `id: ${this.id} - perfume: ${this.nombre}- $${this.precio} - cantidad: ${this.cantidad}. \n`;
-  //   }
 }
 
 class ControlPerfumes {
@@ -73,10 +61,6 @@ class ControlPerfumes {
     });
   }
 }
-
-// buscar(id) {
-//   return this.listadoPerfumes.find((perfume) => perfume.id == id);
-// }
 
 class Carrito {
   constructor() {
@@ -137,9 +121,9 @@ class Carrito {
             <h5 class="card-title">Perfume: ${perfume.nombre}</h5>
             <p class="card-text">${perfume.descripcion}</p>
             <p class="card-text">Cantidad:
-            <button class="btn" ><i class="fa-solid fa-minus"></i></button>
+            <button class="btn" id="disminuir-${perfume.id}" ><i class="fa-solid fa-minus"></i></button>
             <span class="numeroCantidad" >${perfume.cantidad}</span>
-            <button class="btn" ><i class="fa-solid fa-plus"></i></button>
+            <button class="btn" id="aumentar-${perfume.id}" ><i class="fa-solid fa-plus"></i></button>
             
             </p>
             <p class="card-text">Precio: ${perfume.precio}</p>
@@ -150,7 +134,29 @@ class Carrito {
       `;
     });
 
+    this.eAumentarCantidad();
+    this.eDisminuirCantidad();
     this.mostrarTotalCarrito();
+  }
+
+  eAumentarCantidad() {
+    this.listaCarrito.forEach((perfume) => {
+      const btn_suma = document.getElementById(`aumentar-${perfume.id}`);
+      btn_suma.addEventListener("click", () => {
+        perfume.masCantidad();
+        this.mostrarDOM();
+      });
+    });
+  }
+
+  eDisminuirCantidad() {
+    this.listaCarrito.forEach((perfume) => {
+      const btn_resta = document.getElementById(`disminuir-${perfume.id}`);
+      btn_resta.addEventListener("click", () => {
+        perfume.menosCantidad();
+        this.mostrarDOM();
+      });
+    });
   }
 
   totalCarrito() {
@@ -164,14 +170,6 @@ class Carrito {
     const total__Carrito = document.getElementById("total__Carrito");
     total__Carrito.innerText = `Precio Total: $${this.totalCarrito()}`;
   }
-
-  // vaciarCarrito() {
-  //   const vaciar__carrito = document.getElementById("vaciar__carrito");
-  //   vaciar__carrito.addEventListener("click", () => {
-  //     carrito.listaCarrito = [];
-  //     carrito.mostrarDOM();
-  //   });
-  // }
 
   vaciarCarrito() {
     this.listaCarrito = [];
