@@ -1,5 +1,5 @@
 class Perfume {
-  constructor(id, nombre, imagen, descripcion, precio, alt, genero) {
+  constructor(id, nombre, imagen, descripcion, precio, alt) {
     this.id = id;
     this.nombre = nombre;
     this.imagen = imagen;
@@ -7,7 +7,7 @@ class Perfume {
     this.precio = precio;
     this.cantidad = 1;
     this.alt = alt;
-    this.genero = genero;
+    
   }
 
   masCantidad() {
@@ -31,8 +31,7 @@ class ControlPerfumes {
       "img/212l.webp",
       "Carolina Herrera",
       66100,
-      "Imagen del perfume",
-      "Masculino"
+      "Imagen del perfume"
     );
     const perfum2 = new Perfume(
       2,
@@ -40,8 +39,7 @@ class ControlPerfumes {
       "img/arm.webp",
       "EMPORIO ARMANI",
       58900,
-      "Imagen del perfume",
-      "Masculino"
+      "Imagen del perfume"
     );
     const perfum3 = new Perfume(
       3,
@@ -49,8 +47,7 @@ class ControlPerfumes {
       "img/gent.webp",
       "Givenchy",
       87000,
-      "Imagen del perfume",
-      "Femenino"
+      "Imagen del perfume"
     );
     const perfum4 = new Perfume(
       4,
@@ -58,8 +55,7 @@ class ControlPerfumes {
       "img/ralp.webp",
       "Ralph Lauren",
       106900,
-      "Imagen del perfume",
-      "Femenino"
+      "Imagen del perfume"
     );
     const perfum5 = new Perfume(
       5,
@@ -67,8 +63,7 @@ class ControlPerfumes {
       "img/sauvage.webp",
       "Dior",
       102700,
-      "Imagen del perfume",
-      "Femenino"
+      "Imagen del perfume"
     );
     const perfum6 = new Perfume(
       6,
@@ -76,8 +71,7 @@ class ControlPerfumes {
       "img/invictus.webp ",
       "Dior",
       118300,
-      "Imagen del perfume",
-      "Masculino"
+      "Imagen del perfume"
     );
     const perfum7 = new Perfume(
       7,
@@ -85,8 +79,7 @@ class ControlPerfumes {
       "img/icon.webp ",
       "Antonio Banderas",
       22500,
-      "Imagen del perfume",
-      "Masculino"
+      "Imagen del perfume"
     );
     const perfum8 = new Perfume(
       8,
@@ -94,8 +87,7 @@ class ControlPerfumes {
       "img/onemillion.webp ",
       "Paco Rabanne",
       85150,
-      "Imagen del perfume",
-      "Masculino"
+      "Imagen del perfume"
     );
     const perfum9 = new Perfume(
       9,
@@ -103,8 +95,7 @@ class ControlPerfumes {
       "img/fresh.webp ",
       "Moschino",
       51440,
-      "Imagen del perfume",
-      "Masculino"
+      "Imagen del perfume"
     );
 
     this.agregar(perfum1);
@@ -118,54 +109,41 @@ class ControlPerfumes {
     this.agregar(perfum9);
   }
 
-  // eventoFiltro() {
-  //   const gen_fem = document.getElementById("gen_fem");
-  //   const gen_masc = document.getElementById("gen_masc");
-  //   let GeneroFemenino = "Femenino";
-  //   let GeneroMasculino = "Masculino";
-
-  //   gen_fem.addEventListener("change", () => {
-  //     if (gen_fem.value == "Femenino") {
-  //       GeneroFemenino = gen_fem.value;
-  //       console.log(gen_fem.value);
-  //     } else {
-  //       gen_fem.value = "Unisex";
-  //     }
-  //     this.filtrarPorPrecio(GeneroFemenino, GeneroMasculino);
-  //     this.mostrarDOM();
-  //   });
-
-  //   gen_masc.addEventListener("change", () => {
-  //     if (gen_masc.value == "Masculino") {
-  //       GeneroMasculino = gen_masc.value;
-  //     } else {
-  //       GeneroMasculino = "unisex";
-  //     }
-  //     console.log(gen_masc.value);
-  //     this.filtrarPorPrecio(GeneroFemenino, GeneroMasculino);
-  //     this.mostrarDOM();
-  //   });
-  // }
-
   eventoFiltro() {
-    const selectGenero = document.getElementById("select_genero");
+    const precio_min = document.getElementById("precio_min");
+    const precio_max = document.getElementById("precio_max");
+    let valorMinimo = 0;
+    let valorMaximo = Infinity;
 
-    selectGenero.addEventListener("change", () => {
-      const generoSeleccionado = selectGenero.value;
-      console.log("Género seleccionado: " + generoSeleccionado);
+    precio_min.addEventListener("change", () => {
+      if (precio_min.value > 0) {
+        valorMinimo = precio_min.value;
+        console.log(precio_min.value);
+      } else {
+        valorMinimo = 0;
+      }
+      this.filtrarPorPrecio(valorMinimo, valorMaximo);
+      this.mostrarDOM();
+    });
 
-      // Llama a la función para aplicar el filtro usando el género seleccionado
-      this.filtrarPorGenero(generoSeleccionado);
+    precio_max.addEventListener("change", () => {
+      if (precio_max.value > 0) {
+        valorMaximo = precio_max.value;
+      } else {
+        valorMaximo = Infinity;
+      }
+      console.log(precio_max.value);
+      this.filtrarPorPrecio(valorMinimo, valorMaximo);
       this.mostrarDOM();
     });
   }
 
-  filtrarPorGenero(genero) {
+  filtrarPorPrecio(min, max) {
     this.listadoPerfumes = [];
     this.cargarProductos();
-    this.listadoPerfumes = this.listadoPerfumes.filter((perfume) => {
-      return perfume.genero === genero || genero === "unisex";
-    });
+    this.listadoPerfumes = this.listadoPerfumes.filter(
+      (perfume) => min <= perfume.precio && perfume.precio <= max
+    );
   }
 
   agregar(perfume) {
@@ -176,7 +154,6 @@ class ControlPerfumes {
     let productContainer = document.getElementById("productContainer");
 
     productContainer.innerHTML = "";
-
     this.listadoPerfumes.forEach((perfume) => {
       productContainer.innerHTML += `
       <div class="card" style="width: 18rem;">
@@ -332,7 +309,6 @@ class Carrito {
 //instanciar la lista de productos
 const carrito = new Carrito();
 const listp = new ControlPerfumes();
-listp.cargarProductos();
 carrito.getStorage();
 carrito.mostrarDOM();
 
