@@ -36,37 +36,37 @@ class ControlPerfumes {
     );
     const perfum2 = new Perfume(
       2,
-      " STRONGER WITH YOU EDT",
-      "img/arm.webp",
-      "EMPORIO ARMANI",
-      58900,
-      "Imagen del perfume",
-      "Masculino"
-    );
-    const perfum3 = new Perfume(
-      3,
       "Gentleman Society EDP",
       "img/gent.webp",
       "Givenchy",
       87000,
       "Imagen del perfume",
+      "Masculino"
+    );
+    const perfum3 = new Perfume(
+      3,
+      "The Only One 2  EDP",
+      "img/dolce.webp",
+      "Dolce & Gabbana",
+      95000,
+      "Imagen del perfume",
       "Femenino"
     );
     const perfum4 = new Perfume(
       4,
-      "RALPH'S CLUB EDP",
-      "img/ralp.webp",
-      "Ralph Lauren",
-      106900,
+      "Good Girl EDP",
+      "img/goodgirl.webp",
+      "Carolina Herrera",
+      88500,
       "Imagen del perfume",
       "Femenino"
     );
     const perfum5 = new Perfume(
       5,
-      "Sauvage Elixir",
-      "img/sauvage.webp",
-      "Dior",
-      102700,
+      "Irresistible EDP RoseVelvet",
+      "img/irres.webp",
+      "Givenchy",
+      97100,
       "Imagen del perfume",
       "Femenino"
     );
@@ -81,12 +81,12 @@ class ControlPerfumes {
     );
     const perfum7 = new Perfume(
       7,
-      "The Icon Elixir EDP",
-      "img/icon.webp ",
-      "Antonio Banderas",
-      22500,
+      "BLACK XS FOR HER EDP",
+      "img/xsblack.webp ",
+      "Paco Rabanne",
+      44800,
       "Imagen del perfume",
-      "Masculino"
+      "Femenino"
     );
     const perfum8 = new Perfume(
       8,
@@ -99,10 +99,37 @@ class ControlPerfumes {
     );
     const perfum9 = new Perfume(
       9,
-      "FRESH COUTURE",
-      "img/fresh.webp ",
-      "Moschino",
-      51440,
+      "212 VIP EDP",
+      "img/212.webp ",
+      "Carolina Herrera",
+      68400,
+      "Imagen del perfume",
+      "Femenino"
+    );
+    const perfum10 = new Perfume(
+      10,
+      " STRONGER WITH YOU EDT",
+      "img/arm.webp",
+      "EMPORIO ARMANI",
+      58900,
+      "Imagen del perfume",
+      "Masculino"
+    );
+    const perfum11 = new Perfume(
+      11,
+      "Acqua Di Gio EDT",
+      "img/aqua.webp",
+      "Armani",
+      74900,
+      "Imagen del perfume",
+      "Femenino"
+    );
+    const perfum12 = new Perfume(
+      12,
+      "RALPH'S CLUB EDP",
+      "img/ralp.webp",
+      "Ralph Lauren",
+      106900,
       "Imagen del perfume",
       "Masculino"
     );
@@ -116,6 +143,9 @@ class ControlPerfumes {
     this.agregar(perfum7);
     this.agregar(perfum8);
     this.agregar(perfum9);
+    this.agregar(perfum10);
+    this.agregar(perfum11);
+    this.agregar(perfum12);
   }
 
   // eventoFiltro() {
@@ -149,12 +179,8 @@ class ControlPerfumes {
 
   eventoFiltro() {
     const selectGenero = document.getElementById("select_genero");
-
     selectGenero.addEventListener("change", () => {
       const generoSeleccionado = selectGenero.value;
-      console.log("Género seleccionado: " + generoSeleccionado);
-
-      // Llama a la función para aplicar el filtro usando el género seleccionado
       this.filtrarPorGenero(generoSeleccionado);
       this.mostrarDOM();
     });
