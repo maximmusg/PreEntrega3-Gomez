@@ -51,6 +51,10 @@ main {
   text-transform: uppercase;
 }
 
+.select_filter {
+  cursor: pointer;
+}
+
 .product__Container {
   display: flex;
   align-items: center;

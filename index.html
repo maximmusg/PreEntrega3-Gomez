@@ -60,11 +60,16 @@
         <h1>MMSG Perfumes</h1>
       </div>
 
-      <section>
+      <section class="section_filter m-5 w-25 text-cen">
         <form action="">
-          <label for="select_genero">Selecciona un género:</label>
-          <select id="select_genero">
-            <option value="unisex">Unisex</option>
+          <label class="text-xl-center" for="select_genero"
+            ><span class="text__filter m-1 fw-bold"> Filtrar por Género: </span>
+          </label>
+          <select
+            class="select_filter form-select mt-3 fw-semibold border-2 border-black"
+            id="select_genero"
+          >
+            <option value="unisex">Selecciona el Género</option>
             <option value="Femenino">Femenino</option>
             <option value="Masculino">Masculino</option>
             <!-- Puedes agregar más opciones según tus necesidades -->
@@ -74,8 +79,7 @@
       <div class="container product__Container" id="productContainer"></div>
     </main>
 
-    <!-- Modal -->
-
+    <!-- Modal Carrito -->
     <div
       class="modal fade"
       id="exampleModal"
@@ -110,6 +114,40 @@
             </button>
             <button type="button" class="btn btn-primary">
               Finalizar Compra
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Detalle -->
+
+    <div
+      class="modal"
+      id="exampleModal2"
+      data-bs-backdrop="static"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel2"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Detalle:</h1>
+          </div>
+          <div class="modal-body">
+            <div class="card mb-3">
+              <div class="card-body" id="desc_cont"></div>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-between">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              id="cerrarModal"
+            >
+              Volver a Tienda
             </button>
           </div>
         </div>

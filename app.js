@@ -1,13 +1,14 @@
 class Perfume {
-  constructor(id, nombre, imagen, descripcion, precio, alt, genero) {
+  constructor(id, nombre, imagen, marca, precio, alt, genero, descripcion) {
     this.id = id;
     this.nombre = nombre;
     this.imagen = imagen;
-    this.descripcion = descripcion;
+    this.marca = marca;
     this.precio = precio;
     this.cantidad = 1;
     this.alt = alt;
     this.genero = genero;
+    this.descripcion = descripcion;
   }
 
   masCantidad() {
@@ -32,7 +33,8 @@ class ControlPerfumes {
       "Carolina Herrera",
       66100,
       "Imagen del perfume",
-      "Masculino"
+      "Masculino",
+      "Esto es una descripcion"
     );
     const perfum2 = new Perfume(
       2,
@@ -41,7 +43,8 @@ class ControlPerfumes {
       "Givenchy",
       87000,
       "Imagen del perfume",
-      "Masculino"
+      "Masculino",
+      "Esto es una descripcion"
     );
     const perfum3 = new Perfume(
       3,
@@ -50,7 +53,8 @@ class ControlPerfumes {
       "Dolce & Gabbana",
       95000,
       "Imagen del perfume",
-      "Femenino"
+      "Femenino",
+      "Esto es una descripcion"
     );
     const perfum4 = new Perfume(
       4,
@@ -59,7 +63,8 @@ class ControlPerfumes {
       "Carolina Herrera",
       88500,
       "Imagen del perfume",
-      "Femenino"
+      "Femenino",
+      "Esto es una descripcion"
     );
     const perfum5 = new Perfume(
       5,
@@ -68,7 +73,8 @@ class ControlPerfumes {
       "Givenchy",
       97100,
       "Imagen del perfume",
-      "Femenino"
+      "Femenino",
+      "Esto es una descripcion"
     );
     const perfum6 = new Perfume(
       6,
@@ -86,7 +92,8 @@ class ControlPerfumes {
       "Paco Rabanne",
       44800,
       "Imagen del perfume",
-      "Femenino"
+      "Femenino",
+      "Esto es una descripcion"
     );
     const perfum8 = new Perfume(
       8,
@@ -148,35 +155,6 @@ class ControlPerfumes {
     this.agregar(perfum12);
   }
 
-  // eventoFiltro() {
-  //   const gen_fem = document.getElementById("gen_fem");
-  //   const gen_masc = document.getElementById("gen_masc");
-  //   let GeneroFemenino = "Femenino";
-  //   let GeneroMasculino = "Masculino";
-
-  //   gen_fem.addEventListener("change", () => {
-  //     if (gen_fem.value == "Femenino") {
-  //       GeneroFemenino = gen_fem.value;
-  //       console.log(gen_fem.value);
-  //     } else {
-  //       gen_fem.value = "Unisex";
-  //     }
-  //     this.filtrarPorPrecio(GeneroFemenino, GeneroMasculino);
-  //     this.mostrarDOM();
-  //   });
-
-  //   gen_masc.addEventListener("change", () => {
-  //     if (gen_masc.value == "Masculino") {
-  //       GeneroMasculino = gen_masc.value;
-  //     } else {
-  //       GeneroMasculino = "unisex";
-  //     }
-  //     console.log(gen_masc.value);
-  //     this.filtrarPorPrecio(GeneroFemenino, GeneroMasculino);
-  //     this.mostrarDOM();
-  //   });
-  // }
-
   eventoFiltro() {
     const selectGenero = document.getElementById("select_genero");
     selectGenero.addEventListener("change", () => {
@@ -209,8 +187,9 @@ class ControlPerfumes {
         <img src="${perfume.imagen}" class="card-img-top" alt="${perfume.alt}">
         <div class="card-body card__body">
           <h5 class="card-title">${perfume.nombre}</h5>
-          <p class="card-text">${perfume.descripcion}</p>
+          <p class="card-text">${perfume.marca}</p>
           <p class="card-text text__price">$${perfume.precio}</p>
+          <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-keyboard="true" id="verDetalle-${perfume.id}" class="btn">Ver Detalles</button>
           <button id="agregarAlCarrito-${perfume.id}" class="btn">Agregar al carrito</button>
         </div>
     </div>
@@ -231,6 +210,14 @@ class ControlPerfumes {
     const vaciarCarritoButton = document.getElementById("vaciar__carrito");
     vaciarCarritoButton.addEventListener("click", () => {
       carrito.vaciarCarrito(); // Llamar a la función para vaciar el carrito
+    });
+
+    this.listadoPerfumes.forEach((perfume) => {
+      const btnVerDetalle = document.getElementById(`verDetalle-${perfume.id}`);
+      btnVerDetalle.addEventListener("click", () => {
+        descripcion.agregar(perfume);
+        descripcion.mostrarDOM();
+      });
     });
   }
 }
@@ -292,7 +279,7 @@ class Carrito {
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">Perfume: ${perfume.nombre}</h5>
-            <p class="card-text">${perfume.descripcion}</p>
+            <p class="card-text">${perfume.marca}</p>
             <p class="card-text">Cantidad:
             <button class="btn" id="disminuir-${perfume.id}" ><i class="fa-solid fa-minus"></i></button>
             <span class="numeroCantidad" >${perfume.cantidad}</span>
@@ -351,12 +338,38 @@ class Carrito {
   }
 }
 
+class Descripcion {
+  constructor() {
+    this.listaDetalle = [];
+  }
+
+  agregar(perfume) {
+    this.listaDetalle.length = 1;
+    this.listaDetalle.push(perfume);
+  }
+
+  mostrarDOM() {
+    let contenedorDescripcion = document.getElementById("desc_cont");
+    contenedorDescripcion.innerHTML = "";
+
+    this.listaDetalle.forEach((perfume) => {
+      let contenedorDescripcion = document.getElementById("desc_cont");
+      contenedorDescripcion.innerHTML += `
+      <img src="${perfume.imagen}" class="card-img-top" alt="${perfume.alt}" />
+      <h3 class="card-title">${perfume.nombre}</h3>
+      <p class="card-text">${perfume.descripcion}</p>
+      `;
+    });
+  }
+}
+
 //se crearon productos
 
 //se crea un arreglo que muestre los productos
 
 //instanciar la lista de productos
 const carrito = new Carrito();
+const descripcion = new Descripcion();
 const listp = new ControlPerfumes();
 listp.cargarProductos();
 carrito.getStorage();
