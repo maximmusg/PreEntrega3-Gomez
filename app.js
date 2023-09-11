@@ -34,7 +34,7 @@ class ControlPerfumes {
       66100,
       "Imagen del perfume",
       "Masculino",
-      "Esto es una descripcion"
+      "Siéntete siempre joven con 212 Heroes, un fresco aroma masculino que celebra la juventud, la libertad y la autenticidad. Esta fragancia innovadora y vegana, que viene en un atrevido envase con forma de monopatín representación de un elenco de creativos, es una prueba de que nada es más heroico que ser auténtico."
     );
     const perfum2 = new Perfume(
       2,
@@ -44,17 +44,17 @@ class ControlPerfumes {
       87000,
       "Imagen del perfume",
       "Masculino",
-      "Esto es una descripcion"
+      "Givenchy redefine al caballero moderno con su nueva fragancia masculina, Gentleman Society. Una muestra del exclusivo saber hacer de Givenchy, que se compone de materias primas excepcionales. Un Eau de Parfum que reinventa las reglas. Las notas frescas y aromáticas de la Salvia se combinan con el absoluto de flor de Narciso silvestre. Una expresión floral única que contrasta con las facetas oscuras e intensas de un cuarteto de Vetiver de Haití, Uruguay y Madagascar. Las esencias de Cedro y Sándalo se funden con una vainilla adictiva y sensual trazando una inolvidable estela."
     );
     const perfum3 = new Perfume(
       3,
-      "The Only One 2  EDP",
+      "The Only One 2 EDP",
       "img/dolce.webp",
       "Dolce & Gabbana",
       95000,
       "Imagen del perfume",
       "Femenino",
-      "Esto es una descripcion"
+      "El cautivador maridaje entre la violeta y el café se reinterpreta evocando una rosa roja empolvada, como símbolo del amor y la seducción. Las notas de salida de las bayas rojas se combinan con un corazón de aroma de rosas que aporta un aura cálida y sensual a la esencia. Las notas dulces y suaves de las habas tonka en la base aumentan su capacidad adictiva."
     );
     const perfum4 = new Perfume(
       4,
@@ -64,7 +64,7 @@ class ControlPerfumes {
       88500,
       "Imagen del perfume",
       "Femenino",
-      "Esto es una descripcion"
+      "La fragancia GOOD GIRL está inspirada por la visión única de Carolina Herrera de la dualidad de la mujer moderna: audaz y sexy, elegante y enigmática, buena y mala. Siempre forzando y traspasando los límites, la misteriosa sensualidad de GOOD GIRL hace que sea una fragancia moderna y sofisticada a la vez."
     );
     const perfum5 = new Perfume(
       5,
@@ -74,7 +74,7 @@ class ControlPerfumes {
       97100,
       "Imagen del perfume",
       "Femenino",
-      "Esto es una descripcion"
+      "Una irresistible atracción piel a piel donde la ternura es la nueva adicción. Una fragancia femenina con suculentas grosellas negras, que realzan la feminidad aterciopelada de la rosa, la flor característica de Irresistible. Un Iris que acaricia esta nueva faceta de rosa con su textura empolvada. Una fragancia de mujer cautivante que encarna la gracia empoderada. Irresistible Givenchy invita a dejarse llevar y a ser una misma."
     );
     const perfum6 = new Perfume(
       6,
@@ -83,7 +83,8 @@ class ControlPerfumes {
       "Dior",
       118300,
       "Imagen del perfume",
-      "Masculino"
+      "Masculino",
+      "En este intenso duelo, dos fuerzas se desafían: frescura y sensualidad. Paco Rabanne reúne dos asociaciones exclusivas para garantizar un efecto de larga duración. Una declaración de intenciones sorprendente con un suplemento de frescura: la vivacidad del limón recubierta por un todopoderoso incienso. "
     );
     const perfum7 = new Perfume(
       7,
@@ -93,7 +94,7 @@ class ControlPerfumes {
       44800,
       "Imagen del perfume",
       "Femenino",
-      "Esto es una descripcion"
+      "Black XS for Her, de Paco Rabanne. Siguiendo solo tu instinto. Rompiendo las reglas. Capturando el momento.Black XS for Her: una flor narcótica negra. Sensual, inquietante, rebelde. En exceso."
     );
     const perfum8 = new Perfume(
       8,
@@ -102,7 +103,8 @@ class ControlPerfumes {
       "Paco Rabanne",
       85150,
       "Imagen del perfume",
-      "Masculino"
+      "Masculino",
+      "La leyenda renace con una inesperada combinación de revitalizante lavanda, vibrante madera de cedro y sensual benjuí, para una fragancia que es tan desafiante como tú. Una mezcla llamativa de frescura y madera que choca con una sensualidad distintiva para liberar lo que te hace ser únicamente tú."
     );
     const perfum9 = new Perfume(
       9,
@@ -111,7 +113,8 @@ class ControlPerfumes {
       "Carolina Herrera",
       68400,
       "Imagen del perfume",
-      "Femenino"
+      "Femenino",
+      "212 VIP es una fragancia inspirada en las nuevas generaciones de VIP, mentes creativas que reescriben las reglas de Nueva York con confianza, actitud y personalidad. 212 VIP: una fragancia de personalidad, tanto explosiva como magnética. Una pulsación fragante que combina estilo y actitud, un eau de parfum de fiesta."
     );
     const perfum10 = new Perfume(
       10,
@@ -120,7 +123,8 @@ class ControlPerfumes {
       "EMPORIO ARMANI",
       58900,
       "Imagen del perfume",
-      "Masculino"
+      "Masculino",
+      "Viví el poder del amor incondicional con el nuevo perfume tendencia de Emporio Armani. Stronger with you, un perfume para vivir emociones intensas. Juntos somos más fuertes."
     );
     const perfum11 = new Perfume(
       11,
@@ -129,7 +133,8 @@ class ControlPerfumes {
       "Armani",
       74900,
       "Imagen del perfume",
-      "Femenino"
+      "Femenino",
+      "Una fragancia deliciosa, como el paraíso en la piel. Un frasco contorneado de vidrio esmerilado verde celadón. Un floral acuático en un cóctel dulce y salado. ACQUA DI GIO es el perfume perfecto para la mujer de espíritu libre, despreocupada y luminosa."
     );
     const perfum12 = new Perfume(
       12,
@@ -138,7 +143,8 @@ class ControlPerfumes {
       "Ralph Lauren",
       106900,
       "Imagen del perfume",
-      "Masculino"
+      "Masculino",
+      "Ralph's Club de Ralph Lauren es una fragancia de la familia olfativa Amaderada para Hombres. Ralph's Club se lanzó en 2021. La Nariz detrás de esta fragrancia es Dominique Ropion. Las Notas de Salida son esclarea y lavanda; la Nota de Corazón es cedro de Virginia; la Nota de Fondo es vetiver."
     );
 
     this.agregar(perfum1);
@@ -353,11 +359,13 @@ class Descripcion {
     contenedorDescripcion.innerHTML = "";
 
     this.listaDetalle.forEach((perfume) => {
+      let marca__perfume = document.getElementById("marca__perfume");
+      marca__perfume.innerText = perfume.marca;
       let contenedorDescripcion = document.getElementById("desc_cont");
       contenedorDescripcion.innerHTML += `
       <img src="${perfume.imagen}" class="card-img-top" alt="${perfume.alt}" />
-      <h3 class="card-title">${perfume.nombre}</h3>
-      <p class="card-text">${perfume.descripcion}</p>
+      <h3 class="card-title mb-3 text-center color__text">${perfume.nombre}</h3>
+      <p class="card-text fs-6 fw-bolder">${perfume.descripcion}</p>
       `;
     });
   }

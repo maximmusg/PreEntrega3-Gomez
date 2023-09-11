@@ -41,6 +41,10 @@ main {
   justify-content: flex-end;
 }
 
+.color__text {
+  color: rgb(10, 113, 79);
+}
+
 .title__page {
   text-align: center;
 }
