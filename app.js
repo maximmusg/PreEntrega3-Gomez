@@ -195,8 +195,10 @@ class ControlPerfumes {
           <h5 class="card-title">${perfume.nombre}</h5>
           <p class="card-text">${perfume.marca}</p>
           <p class="card-text text__price">$${perfume.precio}</p>
-          <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-keyboard="true" id="verDetalle-${perfume.id}" class="btn">Ver Detalles</button>
-          <button id="agregarAlCarrito-${perfume.id}" class="btn">Agregar al carrito</button>
+          <div class="card__buttons">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-keyboard="true" id="verDetalle-${perfume.id}" class="btn btn-card">Ver Detalles</button>
+            <button id="agregarAlCarrito-${perfume.id}" class="btn btn-card">Agregar al carrito</button>
+          </div>
         </div>
     </div>
       `;
@@ -363,7 +365,7 @@ class Descripcion {
       marca__perfume.innerText = perfume.marca;
       let contenedorDescripcion = document.getElementById("desc_cont");
       contenedorDescripcion.innerHTML += `
-      <img src="${perfume.imagen}" class="card-img-top" alt="${perfume.alt}" />
+      <img src="${perfume.imagen}" class="card-img-top w-50 d-flex mx-auto" alt="${perfume.alt}" />
       <h3 class="card-title mb-3 text-center color__text">${perfume.nombre}</h3>
       <p class="card-text fs-6 fw-bolder">${perfume.descripcion}</p>
       `;
