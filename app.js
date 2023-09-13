@@ -16,7 +16,7 @@ class Perfume {
   }
 
   menosCantidad() {
-    this.cantidad > 0 && this.cantidad--;
+    this.cantidad > 1 && this.cantidad--;
   }
 }
 
@@ -246,6 +246,11 @@ class Carrito {
     }
   }
 
+  eliminar(perfume) {
+    let index = this.listaCarrito.findIndex((perf) => perf.id == perfume.id);
+    this.listaCarrito.splice(index, 1);
+  }
+
   storage() {
     let listaCarritoJSON = JSON.stringify(this.listaCarrito);
     localStorage.setItem("listaCarrito", listaCarritoJSON);
@@ -289,10 +294,10 @@ class Carrito {
             <h5 class="card-title">Perfume: ${perfume.nombre}</h5>
             <p class="card-text">${perfume.marca}</p>
             <p class="card-text">Cantidad:
-            <button class="btn" id="disminuir-${perfume.id}" ><i class="fa-solid fa-minus"></i></button>
-            <span class="numeroCantidad" >${perfume.cantidad}</span>
-            <button class="btn" id="aumentar-${perfume.id}" ><i class="fa-solid fa-plus"></i></button>
-            
+              <button class="btn" id="disminuir-${perfume.id}" ><i class="fa-solid fa-minus"></i></button>
+              <span class="numeroCantidad" >${perfume.cantidad}</span>
+              <button class="btn" id="aumentar-${perfume.id}" ><i class="fa-solid fa-plus"></i></button>
+              <button class="btn btn-danger numeroCantidad" id="eliminar-${perfume.id}" ><i class="fa-solid fa-trash"></i></button>
             </p>
             <p class="card-text">Precio: ${perfume.precio}</p>
           </div>
@@ -300,6 +305,17 @@ class Carrito {
       </div>
     </div>
       `;
+    });
+
+    this.listaCarrito.forEach((perfume) => {
+      const btnEliminarDelCarrito = document.getElementById(
+        `eliminar-${perfume.id}`
+      );
+      btnEliminarDelCarrito.addEventListener("click", () => {
+        carrito.eliminar(perfume);
+        carrito.storage();
+        carrito.mostrarDOM();
+      });
     });
 
     this.eAumentarCantidad();
@@ -336,7 +352,11 @@ class Carrito {
 
   mostrarTotalCarrito() {
     const total__Carrito = document.getElementById("total__Carrito");
-    total__Carrito.innerText = `Precio Total: $${this.totalCarrito()}`;
+    if (this.totalCarrito() == 0) {
+      total__Carrito.innerHTML = `<p>El Carrito se encuentra vacío</p>`;
+    } else {
+      total__Carrito.innerText = `Precio Total: $${this.totalCarrito()}`;
+    }
   }
 
   vaciarCarrito() {
