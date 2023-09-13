@@ -353,7 +353,7 @@ class Carrito {
   mostrarTotalCarrito() {
     const total__Carrito = document.getElementById("total__Carrito");
     if (this.totalCarrito() == 0) {
-      total__Carrito.innerHTML = `<p>El Carrito se encuentra vacío</p>`;
+      total__Carrito.innerHTML = `<p>El Carrito se encuentra vacío!</p>`;
     } else {
       total__Carrito.innerText = `Precio Total: $${this.totalCarrito()}`;
     }
