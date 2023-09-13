@@ -16,7 +16,9 @@ class Perfume {
   }
 
   menosCantidad() {
-    this.cantidad > 1 && this.cantidad--;
+    if (this.cantidad > 1) {
+      this.cantidad--;
+    }
   }
 }
 
@@ -218,6 +220,7 @@ class ControlPerfumes {
     const vaciarCarritoButton = document.getElementById("vaciar__carrito");
     vaciarCarritoButton.addEventListener("click", () => {
       carrito.vaciarCarrito(); // Llamar a la función para vaciar el carrito
+      carrito.storage();
     });
 
     this.listadoPerfumes.forEach((perfume) => {
@@ -244,6 +247,8 @@ class Carrito {
     } else {
       this.listaCarrito.push(perfume);
     }
+
+    this.storage();
   }
 
   eliminar(perfume) {
@@ -263,19 +268,54 @@ class Carrito {
       let listaAuxiliar = [];
 
       NuevalistaCarrito.forEach((producto) => {
-        const { id, nombre, imagen, descripcion, precio, alt } = producto;
+        const {
+          id,
+          nombre,
+          imagen,
+          marca,
+          precio,
+          alt,
+          genero,
+          descripcion,
+          cantidad,
+        } = producto;
         let nuevoProducto = new Perfume(
           id,
           nombre,
           imagen,
-          descripcion,
+          marca,
           precio,
-          alt
+          alt,
+          genero,
+          descripcion
         );
+        nuevoProducto.cantidad = cantidad;
         listaAuxiliar.push(nuevoProducto);
       });
       this.listaCarrito = listaAuxiliar;
     }
+  }
+
+  eAumentarCantidad() {
+    this.listaCarrito.forEach((perfume) => {
+      const btn_suma = document.getElementById(`aumentar-${perfume.id}`);
+      btn_suma.addEventListener("click", () => {
+        perfume.masCantidad();
+        this.storage();
+        this.mostrarDOM();
+      });
+    });
+  }
+
+  eDisminuirCantidad() {
+    this.listaCarrito.forEach((perfume) => {
+      const btn_resta = document.getElementById(`disminuir-${perfume.id}`);
+      btn_resta.addEventListener("click", () => {
+        perfume.menosCantidad();
+        this.storage();
+        this.mostrarDOM();
+      });
+    });
   }
 
   mostrarDOM() {
@@ -321,26 +361,6 @@ class Carrito {
     this.eAumentarCantidad();
     this.eDisminuirCantidad();
     this.mostrarTotalCarrito();
-  }
-
-  eAumentarCantidad() {
-    this.listaCarrito.forEach((perfume) => {
-      const btn_suma = document.getElementById(`aumentar-${perfume.id}`);
-      btn_suma.addEventListener("click", () => {
-        perfume.masCantidad();
-        this.mostrarDOM();
-      });
-    });
-  }
-
-  eDisminuirCantidad() {
-    this.listaCarrito.forEach((perfume) => {
-      const btn_resta = document.getElementById(`disminuir-${perfume.id}`);
-      btn_resta.addEventListener("click", () => {
-        perfume.menosCantidad();
-        this.mostrarDOM();
-      });
-    });
   }
 
   totalCarrito() {
