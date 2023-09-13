@@ -6,7 +6,6 @@
 
 main {
   background-color: #eee;
-  /* padding: 5rem; */
   padding: 10rem;
 }
 
@@ -92,10 +91,6 @@ main {
   color: black;
 }
 
-/* .btn-red {
-  background-color: rgb(189, 15, 15);
-} */
-
 .card__buttons {
   display: flex;
 }
@@ -111,7 +106,6 @@ main {
 }
 
 footer {
-  /* margin-top: 25%; */
   background-color: aquamarine;
   padding: 2rem;
 }
