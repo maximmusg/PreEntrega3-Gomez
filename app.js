@@ -187,6 +187,23 @@ class ControlPerfumes {
     this.listadoPerfumes.push(perfume);
   }
 
+  // mostrar Toastify -----------------------------------------------------------------------------------------------------------
+  mostrarToastify() {
+    Toastify({
+      text: "Producto agregado al carrito!",
+      duration: 1500,
+      destination: "/",
+      gravity: "bottom",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "aquamarine",
+        color: "black",
+        border: "1px solid black",
+      },
+    }).showToast();
+  }
+
   mostrarDOM() {
     let productContainer = document.getElementById("productContainer");
 
@@ -218,6 +235,7 @@ class ControlPerfumes {
         carrito.agregar(perfume);
         carrito.storage();
         carrito.mostrarDOM();
+        this.mostrarToastify();
       });
     });
 
@@ -328,6 +346,23 @@ class Carrito {
     });
   }
 
+  eFinalizarCompra() {
+    const finalizarCompra = document.getElementById("finalizarCompra");
+    finalizarCompra.addEventListener("click", () => {
+      localStorage.removeItem("listaCarrito");
+      this.listaCarrito = [];
+      this.mostrarDOM();
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Compra realizada con éxito!",
+        showConfirmButton: false,
+        timer: 1500,
+        backdrop: "rgba(127, 255, 212, 0.3)",
+      });
+    });
+  }
+
   mostrarDOM() {
     let carritoCont = document.getElementById("carritoCont");
     carritoCont.innerHTML = "";
@@ -431,6 +466,7 @@ class Descripcion {
 const carrito = new Carrito();
 const descripcion = new Descripcion();
 const listp = new ControlPerfumes();
+carrito.eFinalizarCompra();
 listp.cargarProductos();
 carrito.getStorage();
 carrito.mostrarDOM();
