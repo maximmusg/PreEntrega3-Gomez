@@ -188,10 +188,11 @@ class ControlPerfumes {
   }
 
   // mostrar Toastify -----------------------------------------------------------------------------------------------------------
-  mostrarToastify() {
+
+  mostrarToastify(nombrePerfume, marcaPerfume) {
     Toastify({
-      text: "Producto agregado al carrito!",
-      duration: 1500,
+      text: `Se agrego 1 cantidad de ${nombrePerfume} / ${marcaPerfume} al carrito!`,
+      duration: 2000,
       destination: "/",
       gravity: "bottom",
       position: "right",
@@ -232,10 +233,12 @@ class ControlPerfumes {
         `agregarAlCarrito-${perfume.id}`
       );
       btnAgregarAlCarrito.addEventListener("click", () => {
+        const nombrePerfume = ` --- ${perfume.nombre} `;
+        const marcaPerfume = `${perfume.marca} --- `;
         carrito.agregar(perfume);
         carrito.storage();
         carrito.mostrarDOM();
-        this.mostrarToastify();
+        this.mostrarToastify(nombrePerfume, marcaPerfume);
       });
     });
 
