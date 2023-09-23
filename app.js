@@ -244,6 +244,7 @@ class ControlPerfumes {
 
     //boton para vaciar carrito
     const vaciarCarritoButton = document.getElementById("vaciar__carrito");
+
     vaciarCarritoButton.addEventListener("click", () => {
       carrito.vaciarCarrito();
       carrito.storage();
@@ -350,8 +351,8 @@ class Carrito {
   }
 
   eFinalizarCompra() {
-    const finalizarCompra = document.getElementById("finalizarCompra");
-    finalizarCompra.addEventListener("click", () => {
+    const finalizarCompraBtn = document.getElementById("finalizarCompraBtn");
+    finalizarCompraBtn.addEventListener("click", () => {
       localStorage.removeItem("listaCarrito");
       this.listaCarrito = [];
       this.mostrarDOM();
@@ -425,11 +426,26 @@ class Carrito {
   mostrarTotalCarrito() {
     const total__Carrito = document.getElementById("total__Carrito");
     if (this.totalCarrito() == 0) {
-      total__Carrito.innerHTML = `<p> -- El Carrito se encuentra vacío! -- </p>`;
+      //Si el carrito esta vacio no me muestra el boton de finalizar compra
+      finalizarCompraBtn.style.display = "none";
+      total__Carrito.innerHTML = `
+      <img src="img/images.png" />
+      <p> -- El Carrito se encuentra vacío! -- </p>
+      `;
     } else {
+      //Al agregarse productos , vuelve a aparecer el boton
+      finalizarCompraBtn.style.display = "block";
       total__Carrito.innerText = `Precio Total: $${this.totalCarrito()}`;
     }
   }
+
+  // OcultarBotones() {
+  //   if (this.totalCarrito() == 0) {
+  //     vaciarCarritoButton.style.display = "none";
+  //   } else {
+  //     vaciarCarritoButton.style.display = "block";
+  //   }
+  // }
 
   vaciarCarrito() {
     this.listaCarrito = [];
