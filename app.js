@@ -243,21 +243,30 @@ class Carrito {
 
   eFinalizarCompra() {
     const finalizarCompraBtn = document.getElementById("finalizarCompraBtn");
-    finalizarCompraBtn.addEventListener("click", () => {
+    finalizarCompraBtn.addEventListener("click", async () => {
       localStorage.removeItem("listaCarrito");
       this.listaCarrito = [];
       this.mostrarDOM();
 
-      const carritoOculto = document.getElementById("carritoOcultar");
-      carritoOculto.style.display = "none";
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Compra realizada con éxito!",
-        showConfirmButton: false,
-        timer: 1500,
-        backdrop: "rgba(127, 255, 212, 0.3)",
+      const { value: email } = await Swal.fire({
+        title: "Para continuar ingrese su dirección de Email",
+        input: "email",
+        inputLabel: "Recibirá las instrucciones por correo.",
+        inputPlaceholder: "email",
+        validationMessage: "El correo no es válido.",
       });
+
+      if (email) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Compra realizada con éxito!",
+          text: "Recibirá un correo electrónico con las instrucciones de su compra.",
+          showConfirmButton: false,
+          timer: 5000000,
+          backdrop: "rgba(127, 255, 212, 0.3)",
+        });
+      }
     });
   }
 

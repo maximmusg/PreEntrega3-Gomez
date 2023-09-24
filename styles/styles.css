@@ -116,3 +116,21 @@ footer {
   background-color: black;
   color: white;
 }
+
+/* SweetAlert*/
+
+/*  */
+.swal2-input-label {
+  color: aquamarine;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.swal2-html-container {
+  color: aquamarine;
+  font-size: 1rem;
+  font-weight: bolder;
+  text-align: center;
+  margin-top: 1rem;
+  padding-bottom: 2rem;
+}
