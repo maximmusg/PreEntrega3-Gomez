@@ -81,16 +81,15 @@ class ControlPerfumes {
 
   mostrarToastify(nombrePerfume, marcaPerfume) {
     Toastify({
-      text: `Se agrego 1 cantidad de ${nombrePerfume} / ${marcaPerfume} al carrito!`,
+      text: `Se agrego ( 1 ) cantidad de ${nombrePerfume} / ${marcaPerfume} al carrito!`,
       duration: 2000,
       destination: "/",
       gravity: "bottom",
-      position: "right",
+      position: "center",
       stopOnFocus: true,
       style: {
-        background: "aquamarine",
-        color: "black",
-        border: "1px solid black",
+        background: "black",
+        color: "aquamarine",
       },
     }).showToast();
   }
@@ -158,6 +157,8 @@ class Carrito {
 
   //Agregar perfume al carrito
   agregar(perfume) {
+    const carritoOculto = document.getElementById("carritoOcultar");
+    carritoOculto.style.display = "block";
     let existe = this.listaCarrito.some((perf) => perf.id == perfume.id);
 
     if (existe) {
@@ -246,6 +247,9 @@ class Carrito {
       localStorage.removeItem("listaCarrito");
       this.listaCarrito = [];
       this.mostrarDOM();
+
+      const carritoOculto = document.getElementById("carritoOcultar");
+      carritoOculto.style.display = "none";
       Swal.fire({
         position: "center",
         icon: "success",
