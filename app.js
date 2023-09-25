@@ -147,8 +147,25 @@ class ControlPerfumes {
     const vaciarCarritoButton = document.getElementById("vaciar__carrito");
 
     vaciarCarritoButton.addEventListener("click", () => {
-      carrito.vaciarCarrito();
-      carrito.storage();
+      Swal.fire({
+        title: "Seguro que desea Vaciar el Carrito?",
+        text: "Perdera todo el progreso!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirar!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            "Completado!",
+            "Su carrito ahora se encuentra vacío.",
+            "success"
+          );
+          carrito.vaciarCarrito();
+          carrito.storage();
+        }
+      });
     });
 
     //boton para ver detalle del perfume
@@ -318,9 +335,26 @@ class Carrito {
         `eliminar-${perfume.id}`
       );
       btnEliminarDelCarrito.addEventListener("click", () => {
-        carrito.eliminar(perfume);
-        carrito.storage();
-        carrito.mostrarDOM();
+        Swal.fire({
+          title: "Seguro que desea Eliminar este producto?",
+          // text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Si",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              "El producto ha sido eliminado correctamente.",
+              "",
+              "success"
+            );
+            carrito.eliminar(perfume);
+            carrito.storage();
+            carrito.mostrarDOM();
+          }
+        });
       });
     });
 
