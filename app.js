@@ -26,6 +26,7 @@ class Perfume {
 class ControlPerfumes {
   constructor() {
     this.listadoPerfumes = [];
+    this.listaFiltro = [];
   }
 
   //se crearon productos
@@ -50,8 +51,9 @@ class ControlPerfumes {
       this.agregar(nuevoPerfume);
     });
 
+    this.listaFiltro = [...this.listadoPerfumes];
+
     this.mostrarDOM();
-    // this.eventoFiltro();
   }
 
   //Filtro por genero
@@ -66,11 +68,21 @@ class ControlPerfumes {
   }
 
   filtrarPorGenero(genero) {
-    this.listadoPerfumes = [];
+    // this.listadoPerfumes = [];
     // this.cargarMostrarProductos();
-    this.listadoPerfumes = this.listadoPerfumes.filter((perfume) => {
-      return perfume.genero === genero || genero === "unisex";
-    });
+    // this.listadoPerfumes = this.listadoPerfumes.filter((perfume) => {
+    //   return perfume.genero === genero || genero === "unisex";
+    // });
+    if (genero === "todos") {
+      this.listadoPerfumes = [...this.listaFiltro];
+      this.mostrarDOM();
+    } else {
+      const productosFiltrados = this.listaFiltro.filter((perfume) => {
+        return perfume.genero === genero || genero === "unisex";
+      });
+      this.listadoPerfumes = productosFiltrados;
+      this.mostrarDOM();
+    }
   }
 
   agregar(perfume) {
