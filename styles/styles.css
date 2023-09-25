@@ -105,6 +105,13 @@ main {
   background-color: rgb(91, 176, 148);
 }
 
+#total__Carrito img {
+  width: 20rem;
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+  mix-blend-mode: multiply;
+}
+
 footer {
   background-color: aquamarine;
   padding: 2rem;
