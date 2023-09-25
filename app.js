@@ -93,7 +93,7 @@ class ControlPerfumes {
 
   mostrarToastify(nombrePerfume, marcaPerfume) {
     Toastify({
-      text: `Se agrego ( 1 ) cantidad de ${nombrePerfume} / ${marcaPerfume} al carrito!`,
+      text: `Se agrego ( 1 ) cantidad de ${nombrePerfume} By ${marcaPerfume} al carrito!`,
       duration: 2000,
       destination: "/",
       gravity: "bottom",
@@ -350,7 +350,7 @@ class Carrito {
     } else {
       //Al agregarse productos , vuelve a aparecer el boton
       finalizarCompraBtn.style.display = "block";
-      total__Carrito.innerText = `Precio Total: $${this.totalCarrito()}`;
+      total__Carrito.innerText = `Precio Total: $${this.totalCarrito()} USD`;
     }
   }
 
