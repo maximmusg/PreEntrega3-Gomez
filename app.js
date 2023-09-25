@@ -361,6 +361,14 @@ class Carrito {
     this.eAumentarCantidad();
     this.eDisminuirCantidad();
     this.mostrarTotalCarrito();
+
+    //Cuando el carrito este vacio me oculta el boton de vaciar carrito
+    const vaciarCarritoButton = document.getElementById("vaciar__carrito");
+    if (this.listaCarrito.length === 0) {
+      vaciarCarritoButton.style.display = "none";
+    } else {
+      vaciarCarritoButton.style.display = "block";
+    }
   }
 
   //para ver el total  del carrito
