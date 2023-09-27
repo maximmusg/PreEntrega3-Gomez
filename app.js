@@ -149,12 +149,12 @@ class ControlPerfumes {
     vaciarCarritoButton.addEventListener("click", () => {
       Swal.fire({
         title: "Seguro que desea Vaciar el Carrito?",
-        text: "Perdera todo el progreso!",
+        text: "Perderá todo el progreso!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Confirar!",
+        confirmButtonText: "Confirmar!",
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire(
@@ -422,7 +422,7 @@ class Descripcion {
       marca__perfume.innerText = perfume.marca;
       let contenedorDescripcion = document.getElementById("desc_cont");
       contenedorDescripcion.innerHTML += `
-      <img src="${perfume.imagen}" class="card-img-top w-50 d-flex mx-auto" alt="${perfume.alt}" />
+      <img src="${perfume.imagen}" class="card-img-top w-card d-flex mx-auto" alt="${perfume.alt}" />
       <h3 class="card-title mb-3 text-center color__text">${perfume.nombre}</h3>
       <p class="card-text fs-6 fw-bolder">${perfume.descripcion}</p>
       `;

@@ -112,6 +112,10 @@ main {
   mix-blend-mode: multiply;
 }
 
+.w-card {
+  width: 20rem;
+}
+
 footer {
   background-color: aquamarine;
   padding: 2rem;
