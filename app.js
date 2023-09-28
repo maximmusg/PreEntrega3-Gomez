@@ -68,11 +68,6 @@ class ControlPerfumes {
   }
 
   filtrarPorGenero(genero) {
-    // this.listadoPerfumes = [];
-    // this.cargarMostrarProductos();
-    // this.listadoPerfumes = this.listadoPerfumes.filter((perfume) => {
-    //   return perfume.genero === genero || genero === "unisex";
-    // });
     if (genero === "todos") {
       this.listadoPerfumes = [...this.listaFiltro];
       this.mostrarDOM();
@@ -89,7 +84,7 @@ class ControlPerfumes {
     this.listadoPerfumes.push(perfume);
   }
 
-  // mostrar Toastify -----------------------------------------------------------------------------------------------------------
+  // Toastify
 
   mostrarToastify(nombrePerfume, marcaPerfume) {
     Toastify({
@@ -128,7 +123,7 @@ class ControlPerfumes {
       `;
     });
 
-    //Boton para agregar al carrito
+    //Botón para agregar al carrito
     this.listadoPerfumes.forEach((perfume) => {
       const btnAgregarAlCarrito = document.getElementById(
         `agregarAlCarrito-${perfume.id}`
@@ -143,7 +138,7 @@ class ControlPerfumes {
       });
     });
 
-    //boton para vaciar carrito
+    //Botón para vaciar carrito
     const vaciarCarritoButton = document.getElementById("vaciar__carrito");
 
     vaciarCarritoButton.addEventListener("click", () => {
@@ -168,7 +163,7 @@ class ControlPerfumes {
       });
     });
 
-    //boton para ver detalle del perfume
+    //Botón para ver detalle del perfume
     this.listadoPerfumes.forEach((perfume) => {
       const btnVerDetalle = document.getElementById(`verDetalle-${perfume.id}`);
       btnVerDetalle.addEventListener("click", () => {
@@ -200,6 +195,7 @@ class Carrito {
     this.storage();
   }
 
+  //Eliminar perfume del carrito
   eliminar(perfume) {
     let index = this.listaCarrito.findIndex((perf) => perf.id == perfume.id);
     this.listaCarrito.splice(index, 1);
@@ -270,6 +266,7 @@ class Carrito {
     });
   }
 
+  // Evento de finalizar compra con sweetalert2
   eFinalizarCompra() {
     const finalizarCompraBtn = document.getElementById("finalizarCompraBtn");
     finalizarCompraBtn.addEventListener("click", async () => {
@@ -328,7 +325,7 @@ class Carrito {
       `;
     });
 
-    //Boton para eliminar producto del carrito
+    //Botón para eliminar producto del carrito
 
     this.listaCarrito.forEach((perfume) => {
       const btnEliminarDelCarrito = document.getElementById(
@@ -337,7 +334,6 @@ class Carrito {
       btnEliminarDelCarrito.addEventListener("click", () => {
         Swal.fire({
           title: "Seguro que desea Eliminar este producto?",
-          // text: "You won't be able to revert this!",
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
@@ -362,7 +358,7 @@ class Carrito {
     this.eDisminuirCantidad();
     this.mostrarTotalCarrito();
 
-    //Cuando el carrito este vacio me oculta el boton de vaciar carrito
+    //Cuando el carrito este vacio me oculta el botón de vaciar carrito
     const vaciarCarritoButton = document.getElementById("vaciar__carrito");
     if (this.listaCarrito.length === 0) {
       vaciarCarritoButton.style.display = "none";
@@ -371,7 +367,7 @@ class Carrito {
     }
   }
 
-  //para ver el total  del carrito
+  //Para ver el total  del carrito
 
   totalCarrito() {
     return this.listaCarrito.reduce(
